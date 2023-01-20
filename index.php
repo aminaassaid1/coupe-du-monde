@@ -47,19 +47,44 @@
       $Croatia = ["nom"=>"Croatia","pts"=>0,"matchjoues"=>0,"matcheswon"=>0,"tiedmatches"=>0,"lostmatches"=>0,"goalsscored"=>0,"goalsconceded"=>0,"goaldifference"=>0];
       $Belgium = ["nom"=>"Belgium","pts"=>0,"matchjoues"=>0,"matcheswon"=>0,"tiedmatches"=>0,"lostmatches"=>0,"goalsscored"=>0,"goalsconceded"=>0,"goaldifference"=>0];
       $Canada = ["nom"=>"Canada","pts"=>0,"matchjoues"=>0,"matcheswon"=>0,"tiedmatches"=>0,"lostmatches"=>0,"goalsscored"=>0,"goalsconceded"=>0,"goaldifference"=>0];
+      
+      $maroc1 = $_POST['MoroccoM1'];
+      $croatia1 = $_POST['CroatiaM1'];
+      $belgium1 = $_POST['BelgiumM1'];
+      $canada1 = $_POST['CanadaM1'];
+
+      $maroc2 = $_POST['MoroccoM2'];
+      $canada2 = $_POST['CanadaM2'];
+      $croatia2= $_POST['CroatiaM2'];
+      $belgium2 = $_POST['BelgiumM2'];
+
+      $maroc3 = $_POST['MoroccoM3'];
+      $belgium3 = $_POST['BelgiumM3'];
+      $croatia3= $_POST['CroatiaM3'];
+      $canada3 = $_POST['CanadaM3'];
+
       //  MATCH 1
           if($_POST['MoroccoM1'] > $_POST['CroatiaM1']){
               $morocco["pts"] += 3;
               $morocco["matchjoues"] +=1;
               $Croatia["matchjoues"] +=1;  
               $morocco["matcheswon"] +=1;  
-              $Croatia["lostmatches"] +=1;       
+              $Croatia["lostmatches"] +=1; 
+              $morocco["goalsscored"]+= $maroc1;
+              $Croatia["goalsscored"]+= $croatia1;
+              $morocco["goalsconceded"]+= $Croatia1;
+              $Croatia["goalsconceded"]+= $maroc1; 
+
           }elseif($_POST['MoroccoM1'] < $_POST['CroatiaM1']){
             $Croatia["pts"] += 3;
             $morocco["matchjoues"] +=1;
             $Croatia["matchjoues"] +=1;  
             $Croatia["matcheswon"] +=1;  
             $morocco["lostmatches"] +=1;
+            $Croatia["goalsscored"]+= $croatia1;
+            $morocco["goalsscored"]+= $maroc1;
+            $morocco["goalsconceded"]+= $croatia1;
+            $Croatia["goalsconceded"]+= $maroc1;
           }elseif($_POST['MoroccoM1'] == $_POST['CroatiaM1']){
             $morocco["pts"] += 1;
             $Croatia["pts"] += 1;
@@ -67,8 +92,10 @@
             $Croatia["matchjoues"] +=1;
             $morocco["tiedmatches"] +=1;
             $Croatia["tiedmatches"] +=1;
-              
-
+            $morocco["goalsscored"] += $maroc1;
+            $Croatia["goalsscored"] += $croatia1;
+            $morocco["goalsconceded"]+= $croatia1;
+            $Croatia["goalsconceded"]+= $maroc1;
           }
 
           if($_POST['BelgiumM1'] > $_POST['CanadaM1']){
@@ -77,19 +104,33 @@
             $Canada["matchjoues"] +=1;  
             $Belgium["matcheswon"] +=1;  
             $Canada["lostmatches"] +=1;
+            $Belgium["goalsscored"] += $belgium1;
+            $Canada["goalsscored"] +=$canada1;
+            $Belgium["goalsconceded"]+=$canada1;
+            $Canada["goalsconceded"] += $belgium1;
         }elseif($_POST['BelgiumM1'] < $_POST['CanadaM1']){
           $Canada["pts"] += 3;
           $Belgium["matchjoues"] +=1;
           $Canada["matchjoues"] +=1;  
           $Canada["matcheswon"] +=1;  
           $Belgium["lostmatches"] +=1;
+          $Belgium["goalsscored"] += $belgium1;
+          $Canada["goalsscored"] +=$canada1;
+          $Belgium["goalsconceded"]+=$canada1;
+          $Canada["goalsconceded"] += $belgium1;
+          $Belgium["goalsconceded"]+=$canada1;
+          $Canada["goalsconceded"] += $belgium1;
         }elseif($_POST['BelgiumM1'] == $_POST['CanadaM1']){
           $Belgium["pts"] += 1;
           $Canada["pts"] += 1;
           $Canada["matchjoues"] +=1;
           $Belgium["matchjoues"] +=1;
           $Belgium["tiedmatches"] +=1;
-          $Canada["tiedmatches"] +=1;  
+          $Canada["tiedmatches"] +=1;
+          $Belgium["goalsscored"] += $belgium1;
+          $Canada["goalsscored"] +=$canada1;
+          $Belgium["goalsconceded"]+=$canada1;
+          $Canada["goalsconceded"] += $belgium1;
         }
 
         // MATCH 2
@@ -101,19 +142,31 @@
           $Canada["matchjoues"] +=1;  
           $morocco["matcheswon"] +=1;  
           $Canada["lostmatches"] +=1;
+          $morocco["goalsscored"] += $maroc2;
+          $Canada["goalsscored"] += $canada2 ;
+          $morocco["goalsconceded"]+=$canada2;
+          $Canada["goalsconceded"] += $maroc2;
         }elseif($_POST['MoroccoM2'] < $_POST['CanadaM2']){
           $Canada["pts"] += 3;
           $morocco["matchjoues"] +=1;
           $Canada["matchjoues"] +=1;  
           $Canada["matcheswon"] +=1;  
           $morocco["lostmatches"] +=1;
+          $morocco["goalsscored"] += $maroc2;
+          $Canada["goalsscored"] += $canada2 ;
+          $morocco["goalsconceded"]+=$canada2;
+          $Canada["goalsconceded"] += $maroc2;
         }elseif($_POST['MoroccoM2'] == $_POST['CanadaM2']){
           $morocco["pts"] += 1;
           $Canada["pts"] += 1;
           $morocco["matchjoues"] +=1;
           $Canada["matchjoues"] +=1;
           $morocco["tiedmatches"] +=1;
-          $Canada["tiedmatches"] +=1;  
+          $Canada["tiedmatches"] +=1;
+          $morocco["goalsscored"] += $maroc2;
+          $Canada["goalsscored"] += $canada2 ;
+          $morocco["goalsconceded"]+=$canada2;
+          $Canada["goalsconceded"] += $maroc2;   
         }
 
         if($_POST['CroatiaM2'] > $_POST['BelgiumM2']){
@@ -122,12 +175,20 @@
           $Belgium["matchjoues"] +=1;  
           $Croatia["matcheswon"] +=1;  
           $Belgium["lostmatches"] +=1;
+          $Belgium["goalsscored"] += $belgium2;
+          $Croatia["goalsscored"] += $croatia2;
+          $Belgium["goalsconceded"]+=$croatia2;
+          $Croatia["goalsconceded"] += $belgium2;
       }elseif($_POST['CroatiaM2'] < $_POST['BelgiumM2']){
         $Belgium["pts"] += 3;
         $Belgium["matchjoues"] +=1;
         $Croatia["matchjoues"] +=1;  
         $Belgium["matcheswon"] +=1;  
         $Croatia["lostmatches"] +=1;
+        $Belgium["goalsscored"] += $belgium2;
+        $Croatia["goalsscored"] += $croatia2 ;
+        $Belgium["goalsconceded"]+=$croatia2;
+        $Croatia["goalsconceded"] += $belgium2;
       }elseif($_POST['CroatiaM2'] == $_POST['BelgiumM2']){
         $Croatia["pts"] += 1;
         $Belgium["pts"] += 1;
@@ -135,7 +196,10 @@
         $Croatia["matchjoues"] +=1;   
         $Belgium["tiedmatches"] +=1;
         $Croatia["tiedmatches"] +=1;
-
+        $Belgium["goalsscored"] += $belgium2;
+        $Croatia["goalsscored"] += $croatia2 ;
+        $Belgium["goalsconceded"]+=$croatia2;
+        $Croatia["goalsconceded"] += $belgium2;
       }
 
     //   MATCH 3
@@ -145,19 +209,31 @@
           $Belgium["matchjoues"] +=1;  
           $morocco["matcheswon"] +=1;  
           $Belgium["lostmatches"] +=1;
+          $Belgium["goalsscored"] += $belgium3;
+          $morocco["goalsscored"] += $maroc3;
+          $Belgium["goalsconceded"]+=$maroc3;
+          $morocco["goalsconceded"] += $belgium3;
         }elseif($_POST['MoroccoM3'] < $_POST['BelgiumM3']){
           $Belgium["pts"] += 3;
           $morocco["matchjoues"] +=1;
           $Belgium["matchjoues"] +=1;  
           $Belgium["matcheswon"] +=1;  
           $morocco["lostmatches"] +=1;
+          $Belgium["goalsscored"] += $belgium3;
+          $morocco["goalsscored"] += $maroc3;
+          $Belgium["goalsconceded"]+=$maroc3;
+          $morocco["goalsconceded"] += $belgium3;
         }elseif($_POST['MoroccoM3'] == $_POST['BelgiumM3']){
           $morocco["pts"] += 1;
           $Belgium["pts"] += 1;
           $morocco["matchjoues"] +=1;
           $Belgium["matchjoues"] +=1; 
           $morocco["tiedmatches"] +=1;
-          $Belgium["tiedmatches"] +=1;   
+          $Belgium["tiedmatches"] +=1;
+          $Belgium["goalsscored"] += $belgium3;
+          $morocco["goalsscored"] += $maroc3; 
+          $Belgium["goalsconceded"]+=$maroc3;
+          $morocco["goalsconceded"] += $belgium3;   
 
         }
 
@@ -167,12 +243,20 @@
           $Croatia["matchjoues"] +=1;  
           $Croatia["matcheswon"] +=1;  
           $Canada["lostmatches"] +=1;
+          $Croatia["goalsscored"] += $croatia3;
+          $Canada["goalsscored"] += $canada3;
+          $Canada["goalsconceded"]+=$canada3;
+          $Croatia["goalsconceded"] += $croatia3;
     }elseif($_POST['CroatiaM3'] < $_POST['CanadaM3']){
       $Canada["pts"] += 3;
       $Canada["matchjoues"] +=1;
       $Croatia["matchjoues"] +=1;  
       $Canada["matcheswon"] +=1;  
       $Croatia["lostmatches"] +=1;
+      $Croatia["goalsscored"] += $croatia3;
+      $Canada["goalsscored"] += $canada3 ;
+      $Canada["goalsconceded"]+=$canada3;
+      $Croatia["goalsconceded"] += $croatia3;
     }elseif($_POST['CroatiaM3'] == $_POST['CanadaM3']){
       $Canada["pts"] += 1;
       $Croatia["pts"] += 1;
@@ -180,6 +264,10 @@
       $Croatia["matchjoues"] +=1;  
       $Canada["tiedmatches"] +=1;
       $Croatia["tiedmatches"] +=1;
+      $Croatia["goalsscored"] += $croatia3;
+      $Canada["goalsscored"] += $canada3 ;
+      $Canada["goalsconceded"]+=$canada3;
+      $Croatia["goalsconceded"] += $croatia3; 
 
     }
     $groups= [ $morocco , $Croatia , $Canada, $Belgium];
@@ -213,9 +301,8 @@
             <td>".$country["lostmatches"]."</td>
             <td>".$country["goalsscored"]."</td>
             <td>".$country["goalsconceded"]."</td>
-            <td>".$country["goaldifference"]."</td>        
-          </tr>
-      ";
+            <td>".$country["goaldifference"]=$country["goalsscored"]-$country["goalsconceded"]."</td>        
+      </tr>";
     };
   };
 ?>
