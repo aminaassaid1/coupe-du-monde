@@ -4,41 +4,108 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
 <form  action="index.php" method="POST">
         <!-- MATCH 1 -->
-        <div>
-            <input type="text" placeholder="Morocco" name="MoroccoM1">
-            <input type="text" placeholder="Croatia" name="CroatiaM1">
+        <div class="match">
+        <h2 class="mb-4 mt-4">MATCH 1</h2>
+          <div class="pardido">
+              <div class="grp">
+              <img class="rounded" src="img/Morocco-Flag.webp" alt="">
+                <input type="text"  name="MoroccoM1">
+              </div>
+                <h3 class="d-flex align-items-center">VS</h3>
+              <div class="grp">
+                <input type="text" name="CroatiaM1">
+                <img class="rounded" src="img/Flag_of_Croatia.svg.png" alt="">
+              </div>
+          </div>
+          <div class="pardido"> 
+              <div class="grp">
+              <img src="img/belgium-flag.jpg" alt="">
+              <input type="text" name="BelgiumM1">
+              </div>
+              <h3 class="d-flex align-items-center">VS</h3>
+              <div class="grp">
+              <input type="text" name="CanadaM1">
+              <img src="img/Flag-Canada.webp" alt="">
+              </div>
+          </div>
         </div>
-        <div> 
-            <input type="text" placeholder="Belgium" name="BelgiumM1">
-            <input type="text" placeholder="Canada" name="CanadaM1">
-        </div>
+
         <!-- MATCH 2 -->
-        <div>
-            <input type="text" placeholder="Morocco" name="MoroccoM2">
-            <input type="text" placeholder="Canada" name="CanadaM2">
-        </div>
-        <div> 
-            <input type="text" placeholder="Croatia" name="CroatiaM2">
-            <input type="text" placeholder="Belgium" name="BelgiumM2">
+        <div class="match">
+        <h2 class="mb-4 mt-4">MATCH 2</h2>
+          <div class="pardido">
+              <div class="grp">
+                <img src="img/Morocco-Flag.webp" alt="">
+                <input type="text"  name="MoroccoM2">
+              </div>
+              <h3 class="d-flex align-items-center">VS</h3>
+              <div class="grp">
+                <input type="text" name="CanadaM2">
+                <img  src="img/Flag-Canada.webp" alt="">
+              </div>
+          </div>
+          <div class="pardido"> 
+              <div class="grp">
+              <img src="img/Flag_of_Croatia.svg.png" alt="">
+                <input type="text" name="CroatiaM2">
+              </div class="pardido">
+              <h3 class="d-flex align-items-center">VS</h3>
+              <div class="grp">
+                <input type="text" name="BelgiumM2">
+                <img src="img/belgium-flag.jpg" alt="">
+              </div>
+          </div>
         </div>
         <!-- MATCH 3 -->
-        <div>
-            <input type="text" placeholder="Morocco" name="MoroccoM3">
-            <input type="text" placeholder="Belgium" name="BelgiumM3">
-        </div>
-        <div> 
-            <input type="text" placeholder="Croatia" name="CroatiaM3">
-            <input type="text" placeholder="Canada" name="CanadaM3">
+        <div class="match">
+          <h2 class="mb-4 mt-4">MATCH 3</h2>
+          <div class="pardido">
+              <div class="grp">
+                <img src="img/Morocco-Flag.webp" alt="">
+                <input type="text" name="MoroccoM3">
+              </div>
+              <h3 class="d-flex align-items-center">VS</h3>
+              <div class="grp">
+                <input type="text" name="BelgiumM3">
+                <img src="img/belgium-flag.jpg" alt="">
+              </div>
+          </div>
+          <div class="pardido"> 
+            <div class="grp">
+            <img src="img/Flag_of_Croatia.svg.png" alt="">
+              <input type="text" name="CroatiaM3">
+            </div>
+            <h3 class="d-flex align-items-center">VS</h3>
+            <div class="grp">
+              <input type="text" name="CanadaM3">
+              <img src="img/Flag-Canada.webp" alt="">
+            </div>
+          </div>
         </div>
         
         <input type="submit" value="Simulate" name="simulate">
     
     </form>
+    <table class="table table-dark table-striped-columns">
+        <tbody>
+          <tr>
+            <th scope='col'>Teams</th>
+            <th scope='col'>points</th>
+            <th scope='col'>match joues</th>
+            <th scope='col'>matche swon</th>
+            <th scope='col'>tied matches</th>
+            <th scope='col'>lost matches</th>
+            <th scope='col'>goal sscored</th>
+            <th scope='col'>goal sconceded</th>
+            <th scope='col'>goal difference </th>
+          </tr>
 <?php 
     // faire le traitement qu'après envoi du formulaire 
     if(isset($_POST['simulate'] )) {
@@ -72,7 +139,7 @@
               $Croatia["lostmatches"] +=1; 
               $morocco["goalsscored"]+= $maroc1;
               $Croatia["goalsscored"]+= $croatia1;
-              $morocco["goalsconceded"]+= $Croatia1;
+              $morocco["goalsconceded"]+= $croatia1;
               $Croatia["goalsconceded"]+= $maroc1; 
 
           }elseif($_POST['MoroccoM1'] < $_POST['CroatiaM1']){
@@ -271,28 +338,10 @@
 
     }
     $groups= [ $morocco , $Croatia , $Canada, $Belgium];
-    echo "
-    <table class='table table-striped'>
-        <thead>
-          <tr>
-            <th scope='col'>#</th>
-            <th scope='col'>Teams</th>
-            <th scope='col'>points</th>
-            <th scope='col'>match joues</th>
-            <th scope='col'>matche swon</th>
-            <th scope='col'>tied matches</th>
-            <th scope='col'>lost matches</th>
-            <th scope='col'>goal sscored</th>
-            <th scope='col'>goal sconceded</th>
-            <th scope='col'>goal difference </th>
-          </tr>
-        </thead>
-        <tbody>
-    ";
     foreach($groups as $country){
+      
       echo "
       <tr>
-            <th scope='row'>1</th>
             <td>".$country["nom"]."</td>
             <td>".$country["pts"]."</td>
             <td>".$country["matchjoues"]."</td>
@@ -303,9 +352,12 @@
             <td>".$country["goalsconceded"]."</td>
             <td>".$country["goaldifference"]=$country["goalsscored"]-$country["goalsconceded"]."</td>        
       </tr>";
+      
     };
+    foreach ($groups as $contry =>)
   };
 ?>
-
+        </tbody>
+    </table>
 </body>
 </html>
