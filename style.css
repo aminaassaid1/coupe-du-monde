@@ -35,8 +35,9 @@ img {
     border-radius: 20%;
     padding: 9px 25px;
     border: 4px solid #ad3d5e;
-    color: black !important;
     background: #EEEEE4;
+    color: #8A1538;
+    padding: 0;
   }
   h2 { 
     text-align:justify;
