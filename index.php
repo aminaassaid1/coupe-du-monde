@@ -338,6 +338,21 @@
 
     }
     $groups= [ $morocco , $Croatia , $Canada, $Belgium];
+    function compare($a, $b) {
+      
+        if($b['goaldifference'] == $a['goaldifference']){
+
+          if($b['pts'] == $a['pts']){
+            return $b['goaldifference'] <=> $a['goaldifference'];
+      }
+          return $b['goalsscored'] <=> $a['goalsscored'];
+        };
+        
+      return $b['pts'] <=> $a['pts'];
+  }
+  
+  // Sort the array using usort
+  usort($groups, 'compare');
     foreach($groups as $country){
       
       echo "
@@ -354,6 +369,8 @@
       </tr>";
       
     };
+   
+    
   };
 ?>
         </tbody>
